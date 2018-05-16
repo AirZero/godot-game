@@ -7,10 +7,10 @@ path="res://.import/koiro.png-4550f62e58005240de13a3b8f264416e.stex"
 [deps]
 
 source_file="res://koiro.png"
-source_md5="da372a311662de571e41452129263b2a"
+source_md5="9e2ed9ed837cb23df0025b9552c5165e"
 
 dest_files=[ "res://.import/koiro.png-4550f62e58005240de13a3b8f264416e.stex" ]
-dest_md5="3512f4950aba8542ce5cd96e5990166e"
+dest_md5="ff4fc9939279a3e2235ef5cb9bba5686"
 
 [params]
 

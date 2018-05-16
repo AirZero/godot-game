@@ -1,9 +1,16 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://KinematicBody2D.gd" type="Script" id=1]
+[ext_resource path="res://koiro2.gd" type="Script" id=1]
 [ext_resource path="res://koiro.png" type="Texture" id=2]
-[ext_resource path="res://Sprite.gd" type="Script" id=3]
-[ext_resource path="res://ruohe.png" type="Texture" id=4]
+[ext_resource path="res://Koiro2_sprite.gd" type="Script" id=3]
+[ext_resource path="res://KinematicBody2D.gd" type="Script" id=4]
+[ext_resource path="res://Sprite.gd" type="Script" id=5]
+[ext_resource path="res://ruohe.png" type="Texture" id=6]
+
+[sub_resource type="RectangleShape2D" id=3]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 10 )
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -17,10 +24,9 @@ extents = Vector2( 32, 32 )
 
 [node name="Node" type="Node" index="0"]
 
-[node name="KinematicBody2D" type="KinematicBody2D" parent="." index="0"]
+[node name="koiro2" type="KinematicBody2D" parent="." index="0"]
 
-position = Vector2( 320, 224 )
-scale = Vector2( 2.0625, 2.0625 )
+position = Vector2( 138, 299 )
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
@@ -30,18 +36,46 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Sprite" type="Sprite" parent="KinematicBody2D" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="koiro2" index="0"]
+
+position = Vector2( -2.12498, -2.12496 )
+scale = Vector2( 4.92308, 4.92308 )
+shape = SubResource( 3 )
+
+[node name="Koiro2_sprite" type="Sprite" parent="koiro2" index="1"]
+
+modulate = Color( 0.353027, 1, 0.21875, 1 )
+position = Vector2( -2.12499, -2.12499 )
+scale = Vector2( 0.130615, 0.130615 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+_sections_unfolded = [ "Visibility" ]
+
+[node name="koiro1" type="KinematicBody2D" parent="." index="1"]
+
+position = Vector2( 320, 224 )
+scale = Vector2( 2.0625, 2.0625 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="koiro1" index="0"]
 
 position = Vector2( 0.830586, 0.093749 )
 scale = Vector2( 0.0725937, 0.0725937 )
 texture = ExtResource( 2 )
-script = ExtResource( 3 )
+script = ExtResource( 5 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D" index="1"]
+[node name="koiro1_collision" type="CollisionShape2D" parent="koiro1" index="1"]
 
 shape = SubResource( 1 )
 
-[node name="Camera2D" type="Camera2D" parent="KinematicBody2D" index="2"]
+[node name="Camera2D" type="Camera2D" parent="koiro1" index="2"]
 
 anchor_mode = 1
 rotating = false
@@ -66,7 +100,7 @@ editor_draw_screen = true
 editor_draw_limits = false
 editor_draw_drag_margin = false
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." index="1"]
+[node name="StaticBody2D" type="StaticBody2D" parent="." index="2"]
 
 position = Vector2( 115, 644 )
 scale = Vector2( 4.23438, 4.23438 )
@@ -91,10 +125,10 @@ shape = SubResource( 2 )
 
 position = Vector2( -0.409913, -42.5757 )
 scale = Vector2( 0.0578657, 0.0681945 )
-texture = ExtResource( 4 )
+texture = ExtResource( 6 )
 _sections_unfolded = [ "Material", "Visibility" ]
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="." index="2"]
+[node name="StaticBody2D2" type="StaticBody2D" parent="." index="3"]
 
 position = Vector2( 368, 644 )
 scale = Vector2( 4.48437, 4.48437 )
@@ -119,10 +153,10 @@ shape = SubResource( 2 )
 
 position = Vector2( -0.409913, -42.5757 )
 scale = Vector2( 0.0578657, 0.0681945 )
-texture = ExtResource( 4 )
+texture = ExtResource( 6 )
 _sections_unfolded = [ "Material", "Visibility" ]
 
-[node name="StaticBody2D3" type="StaticBody2D" parent="." index="3"]
+[node name="StaticBody2D3" type="StaticBody2D" parent="." index="4"]
 
 position = Vector2( 621, 644 )
 scale = Vector2( 4.48437, 4.48437 )
@@ -147,10 +181,10 @@ shape = SubResource( 2 )
 
 position = Vector2( -0.409913, -42.5757 )
 scale = Vector2( 0.0578657, 0.0681945 )
-texture = ExtResource( 4 )
+texture = ExtResource( 6 )
 _sections_unfolded = [ "Material", "Visibility" ]
 
-[node name="StaticBody2D4" type="StaticBody2D" parent="." index="4"]
+[node name="StaticBody2D4" type="StaticBody2D" parent="." index="5"]
 
 position = Vector2( 874, 644 )
 scale = Vector2( 4.84375, 4.84375 )
@@ -175,7 +209,19 @@ shape = SubResource( 2 )
 
 position = Vector2( -0.409913, -42.5757 )
 scale = Vector2( 0.0578657, 0.0681945 )
-texture = ExtResource( 4 )
+texture = ExtResource( 6 )
 _sections_unfolded = [ "Material", "Visibility" ]
+
+[node name="killer_block" type="StaticBody2D" parent="." index="6"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="Sprite" type="Sprite" parent="killer_block" index="0"]
 
 
